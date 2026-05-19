@@ -100,3 +100,15 @@
 - **Commands run:**
   - `cargo test`
 - **Result:** Requested schema/runtime scaffolding and validation coverage are implemented and verified; no blockers remain.
+
+## 2026-05-19 11:20 UTC — Capability routing + platform contract skeleton (Incomplete)
+- **Status:** Incomplete
+- **Context:** User requested broad implementation including capability system, typed routing, platform module registry/contracts, multiple platform module scaffolds, and Chamber runtime hardening.
+- **Attempt log:**
+  - 2026-05-19 11:21 UTC: Reworked `botforge-spec` to split typed event/intent envelopes and expanded scoped capability grants.
+  - 2026-05-19 11:24 UTC: Implemented runtime Court validation/routing with audit logging and scope mismatch/unknown capability denial.
+  - 2026-05-19 11:28 UTC: Added Rust `PlatformModule` trait and `PlatformRegistry` activation with required secret checks.
+  - 2026-05-19 11:30 UTC: Added mock architecture tests and platform docs placeholders for discord/reddit/spotify/youtube/rss/webhook.
+- **Commands run:**
+  - `cargo test`
+- **Result:** Core skeleton landed and tests pass, but full Wasmtime integration and complete platform module crates/tests remain pending in `LEFTOVERS.md`.

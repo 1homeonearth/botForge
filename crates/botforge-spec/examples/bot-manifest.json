@@ -1,10 +1,10 @@
 {
   "bot": {"name": "squire", "version": "1.0.0"},
-  "build": {"target": "wasm32-wasip1", "crate_path": "crates/squire"},
-  "security": {"signatures_required": true, "hash_required": true},
+  "build": {"language": "rust", "target": "wasm32-wasi", "crate_path": "crates/squire"},
+  "security": {"signatures_required": true, "hash_required": true, "forbidden_permissions": []},
   "platforms": {"required": ["discord"], "optional": ["reddit"]},
   "capabilities": ["discord.message.send", "botforge.state.read"],
   "events": ["discord.message.created"],
   "intents": ["discord.message.send"],
-  "setup": {"fields": [{"key":"prefix","type":"string"}]}
+  "setup": {"fields": [{"key": "guild_id", "field_type": "string", "required": true}]}
 }

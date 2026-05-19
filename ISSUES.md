@@ -87,3 +87,16 @@
 - **Commands run:**
   - `cargo test`
 - **Result:** Requested foundational scaffolding and documentation alignment completed with passing tests.
+
+## 2026-05-19 10:05 UTC — BotForge schema/runtime/storage/doc audit and hardening sweep (Complete)
+- **Status:** Complete
+- **Context:** User requested full audit/implementation pass for AGENTS/design-law alignment, `botforge-spec` stabilization, runtime lifecycle/boundary scaffolding, and validation fixtures.
+- **Attempt log:**
+  - 2026-05-19 09:45 UTC: Reviewed AGENTS/ISSUES/LEFTOVERS plus README/CHANGELOG and canonical docs before editing.
+  - 2026-05-19 09:50 UTC: Reworked `botforge-spec` types to include richer envelope/manifest/setup schema fields and validation error taxonomy.
+  - 2026-05-19 09:58 UTC: Added success/failure schema validation tests and updated manifest examples.
+  - 2026-05-19 10:02 UTC: Extended runtime skeleton with lifecycle transition guards and test coverage for impossible activation jumps.
+  - 2026-05-19 10:04 UTC: Updated README/CHANGELOG and ran full `cargo test` with all tests passing.
+- **Commands run:**
+  - `cargo test`
+- **Result:** Requested schema/runtime scaffolding and validation coverage are implemented and verified; no blockers remain.

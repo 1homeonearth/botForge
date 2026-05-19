@@ -1,1 +1,10 @@
-{"feature":{"name":"starboard","version":"1.0.0"},"owner_bot":"squire","required_platforms":["discord"],"optional_platforms":[],"required_capabilities":["discord.message.read"],"subscribed_events":["discord.reaction.added"],"emitted_intents":["discord.message.send"],"setup":{"fields":[{"key":"star_emoji","type":"string"}]}}
+{
+  "feature": {"name": "bard.fun", "version": "1.0.0"},
+  "owner_bot": "squire",
+  "required_platforms": ["discord"],
+  "optional_platforms": ["reddit"],
+  "required_capabilities": ["discord.message.send"],
+  "subscribed_events": ["discord.message.created"],
+  "emitted_intents": ["discord.message.send"],
+  "setup": {"fields": [{"key": "prefix", "field_type": "string", "required": false}]}
+}

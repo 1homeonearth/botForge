@@ -1,10 +1,10 @@
-use botforge_runtime::{Chamber, Court, Gate, Intent};
-use botforge_spec::Envelope;
+use botforge_runtime::{Chamber, Court, Gate, Intent, ModuleLifecycleState};
+use botforge_spec::{Envelope, SPEC_VERSION};
 
 fn intent_with_caps() -> Intent {
     Intent(Envelope {
-        spec: "botforge.spec.v1".into(), id: "1".into(), r#type: "discord.message.send".into(),
-        timestamp: "2026-05-19T00:00:00Z".into(), source: "bot.squire".into(), target: Some("discord".into()),
+        spec: SPEC_VERSION.into(), id: "1".into(), r#type: "discord.message.send".into(),
+        timestamp: "2026-05-19T00:00:00Z".into(), source: "bot.squire".into(), from: Some("bot.squire".into()), target: Some("discord".into()),
         actor: "bot".into(), payload: serde_json::json!({}), context: serde_json::json!({}),
         correlation_id: None, request_id: None, capabilities_used: vec!["discord.message.send".into()]
     })
@@ -23,4 +23,10 @@ fn intent_must_pass_court_before_gate_execution() {
     let intent = intent_with_caps();
     let approved = court.validate_intent(&intent);
     assert!(gate.execute_intent(&intent, approved));
+}
+
+#[test]
+fn impossible_activation_jump_rejected() {
+    assert!(!Court::transition_allowed(ModuleLifecycleState::Discovered, ModuleLifecycleState::Active));
+    assert!(Court::transition_allowed(ModuleLifecycleState::Staged, ModuleLifecycleState::Active));
 }

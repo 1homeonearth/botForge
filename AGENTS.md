@@ -222,3 +222,12 @@ Bard old welcome_card.py moves to squire.welcome_cards. starboard.py moves to sq
 Cryer package.json/Node packaging retires. Express API in index.js becomes BotForge intent handlers and scheduler. store.js JSON registry becomes SQLite campaign storage. CLI becomes Discord setup panels. Subreddit add/edit/queue flow survives as cryer.subreddit_profiles. postNow/postAll/throttle/scheduling survives as campaign runner using BotForge scheduler. Sync from Squire becomes BotForge server registry events. Logs UI becomes BotForge dashboard. lib/reddit.js becomes Rust reddit platform. logger.js becomes audit/log service. network helper concept moves into adapter/network validation. Sentry Omega README/lib.rs survive as sentry-omega with real crypto, signatures, canonical manifests, BotForge lockfile verification, Rampart checks, dashboard reporting.
  
 Implementation phases: 1 botforge-spec schemas; 2 runtime skeleton, SQLite, registries, manifest validation, Wasmtime prototype, host functions, audit; 3 discord platform with Twilight; 4 reddit platform; 5 Python/WASM SDK and working bot template; 6 Squire MVP; 7 Sentry MVP; 8 Rampart MVP; 9 Cryer MVP; 10 Bard MVP; 11 advanced audit-log diffing, webhook relay, backups, drift enforcement, templates, analytics, cross-server sync, appeals, emergency console.
+
+
+## Session Continuity Files (ISSUES.md and LEFTOVERS.md)
+
+- Before new implementation work, review `ISSUES.md` and `LEFTOVERS.md` at repository root.
+- Resolve unresolved `ISSUES.md` items first; record each solution attempt in the relevant issue chain.
+- Execute `LEFTOVERS.md` remaining tasks second, then clear completed handoff noise while keeping useful unresolved or final resolution context.
+- Verify presumed fixes with concrete test/check commands before marking issues complete.
+- Keep `ISSUES.md` updated with timestamps, commands, outcomes, and final resolutions.

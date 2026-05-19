@@ -1,0 +1,1 @@
+{"feature":{"name":"starboard","version":"1.0.0"},"owner_bot":"squire","required_platforms":["discord"],"optional_platforms":[],"required_capabilities":["discord.message.read"],"subscribed_events":["discord.reaction.added"],"emitted_intents":["discord.message.send"],"setup":{"fields":[{"key":"star_emoji","type":"string"}]}}

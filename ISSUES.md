@@ -73,3 +73,17 @@
   - `sed -n '1,260p' docs/implementation-roadmap.md`
   - `rg --files`
 - **Result:** Requested split-gate roadmap documentation added and ready for future extraction PRs.
+
+## 2026-05-19 09:15 UTC — Root governance docs and runtime/spec/storage scaffolding alignment (Complete)
+- **Status:** Complete
+- **Context:** AGENTS.md was oversized/redundant and missing concise continuity instructions; runtime/spec/storage tasks required architecture-aligned scaffolds and tests.
+- **Attempt log:**
+  - 2026-05-19 09:16 UTC: Replaced root `AGENTS.md` with concise binding architecture and continuity workflow, plus mandatory canonical-doc reading rule.
+  - 2026-05-19 09:18 UTC: Added canonical design docs for runtime/platform/Rampart and migration law under `docs/design/`.
+  - 2026-05-19 09:21 UTC: Expanded `botforge-spec` with envelope/manifest schema types, examples, and validation tests.
+  - 2026-05-19 09:24 UTC: Implemented `botforge-runtime` Gate/Court/Chamber skeleton and architecture boundary tests.
+  - 2026-05-19 09:26 UTC: Added SQLite core storage migration scaffold with required logical tables.
+  - 2026-05-19 09:27 UTC: Updated README/CHANGELOG/architecture docs and ran full cargo test suite.
+- **Commands run:**
+  - `cargo test`
+- **Result:** Requested foundational scaffolding and documentation alignment completed with passing tests.

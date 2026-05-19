@@ -1,0 +1,10 @@
+[package]
+name = "botforge-runtime"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+botforge-spec = { path = "../botforge-spec" }
+
+[lib]
+path = "src/lib.rs"

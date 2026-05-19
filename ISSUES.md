@@ -11,3 +11,22 @@
   - `rg --files -g 'AGENTS.md' -g 'AGENTS.override.md'`
   - `rg --files`
 - **Result:** Issue resolved by creating required tracking files and proceeding with requested documentation additions.
+
+## 2026-05-19 00:10 UTC — Runtime policy precedence/enforcement and deterministic conflict handling (Complete)
+- **Status:** Complete
+- **Context:** Required implementation and documentation of canonical scope order, deny/allow precedence, profile/staged tie-breaking, rule-path audit recording, and deterministic conflict tests across `crates/botforge-runtime` and `crates/botforge-spec`.
+- **Attempt log:**
+  - 2026-05-19 00:10 UTC: Inspected repository and identified missing `crates/botforge-runtime` source and test scaffolding.
+  - 2026-05-19 00:12 UTC: Added workspace and crate manifests for `botforge-spec` and `botforge-runtime`.
+  - 2026-05-19 00:14 UTC: Implemented policy scope/effect/rule schema definitions in `crates/botforge-spec/src/lib.rs`.
+  - 2026-05-19 00:16 UTC: Implemented runtime policy evaluator with deterministic sorting, staged filtering, and audit rule-path output in `crates/botforge-runtime/src/lib.rs`.
+  - 2026-05-19 00:18 UTC: Added conflict-focused tests in `crates/botforge-runtime/tests/policy_engine.rs`.
+  - 2026-05-19 00:19 UTC: Added runtime policy docs in `docs/design/runtime-policy-evaluation.md`.
+  - 2026-05-19 00:20 UTC: Ran `cargo test` and confirmed all tests passed.
+- **Commands run:**
+  - `rg --files -g 'AGENTS.md' -g 'AGENTS.override.md' && rg --files ISSUES.md LEFTOVERS.md`
+  - `cat AGENTS.md && cat ISSUES.md && cat LEFTOVERS.md`
+  - `rg --files crates/botforge-runtime crates/botforge-spec docs`
+  - `find . -maxdepth 4 -type f`
+  - `cargo test`
+- **Result:** All requested policy semantics were documented and implemented with deterministic tests and passing verification.

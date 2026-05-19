@@ -58,3 +58,18 @@
   - `sqlite3 :memory: ".read crates/botforge-runtime/migrations/0001_retention_governance.sql"`
   - `cargo test`
 - **Result:** Governance policy doc and schema migration implemented with immutable audit-link enforcement and passing validation/tests.
+
+## 2026-05-19 08:30 UTC — Missing implementation roadmap split gates (Complete)
+- **Status:** Complete
+- **Context:** User requested explicit repository extraction gates in `docs/implementation-roadmap.md`, including spec stability, coverage/CI thresholds, release/changelog discipline, ownership/boundary checks, migration runbook, and reusable checklist template.
+- **Attempt log:**
+  - 2026-05-19 08:27 UTC: Checked root guidance and continuity files (`AGENTS.md`, `ISSUES.md`, `LEFTOVERS.md`) and confirmed no unresolved blockers.
+  - 2026-05-19 08:28 UTC: Verified that `docs/implementation-roadmap.md` did not exist.
+  - 2026-05-19 08:30 UTC: Authored new roadmap file with five explicit split gates, runbook steps, and a pre-extraction checklist template.
+- **Commands run:**
+  - `rg --files -g 'AGENTS.md' -g 'AGENTS.override.md'`
+  - `cat AGENTS.md`
+  - `cat ISSUES.md && cat LEFTOVERS.md`
+  - `sed -n '1,260p' docs/implementation-roadmap.md`
+  - `rg --files`
+- **Result:** Requested split-gate roadmap documentation added and ready for future extraction PRs.

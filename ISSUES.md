@@ -45,3 +45,16 @@
   - `sed -n '1,260p' crates/botforge-runtime/tests/policy_engine.rs`
   - `cargo test`
 - **Result:** Runtime now has deterministic Chamber host-call guardrails and coverage for core abuse cases; spec/checklist published under `docs/design`.
+
+## 2026-05-19 08:05 UTC — Retention governance policy and immutable audit-linked schema migration (Complete)
+- **Status:** Complete
+- **Context:** Added governance/security retention policy documentation and SQLite migration tables for policy metadata, legal holds, removal exceptions, approvals, and immutable parent-audit linkage.
+- **Attempt log:**
+  - 2026-05-19 08:05 UTC: Reviewed existing repository structure and identified absence of governance policy docs and SQL migrations.
+  - 2026-05-19 08:08 UTC: Added `docs/governance/retention-governance-security-policy.md` covering default permanence, override authority/process, legal hold/removal procedures, custody metadata changes, and approval thresholds.
+  - 2026-05-19 08:11 UTC: Added `crates/botforge-runtime/migrations/0001_retention_governance.sql` with retention policy, edit, approval, legal hold, and custody exception tables plus immutable parent audit triggers.
+  - 2026-05-19 08:12 UTC: Verified SQL migration syntax with `sqlite3` in-memory execution and reran `cargo test` successfully.
+- **Commands run:**
+  - `sqlite3 :memory: ".read crates/botforge-runtime/migrations/0001_retention_governance.sql"`
+  - `cargo test`
+- **Result:** Governance policy doc and schema migration implemented with immutable audit-link enforcement and passing validation/tests.

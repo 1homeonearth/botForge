@@ -1,2 +1,2 @@
 # botForge
-A modular not ecosystem with potential for universal compatibility
+A modular bot ecosystem with potential for universal compatibility

@@ -16,3 +16,5 @@ BotForge is a Rust-first runtime ecosystem for policy-contained WASM bots and Ru
 - Skeleton platform-module documentation and setup placeholders for discord/reddit/spotify/youtube/rss/webhook.
 
 - Setup engine now supports staged config diff preview, promotion, rollback, and secret-masked value presentation in runtime scaffolding.
+
+- Cryer campaign migration scaffolding now defines canonical handlers/intents/setup panels and SQLite campaign storage tables for BotForge-native scheduling/reporting.

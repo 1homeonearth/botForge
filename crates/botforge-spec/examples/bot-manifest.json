@@ -6,5 +6,19 @@
   "capabilities": ["discord.message.send", "botforge.state.read"],
   "events": ["discord.message.created"],
   "intents": ["discord.message.send"],
-  "setup": {"fields": [{"key": "guild_id", "field_type": "string", "required": true}]}
+  "setup": {
+    "version": "1.0.0",
+    "pages": [
+      {
+        "id": "general",
+        "title": "General",
+        "fields": [
+          {"key": "setup_command", "field_type": "slash_command", "required": true, "secret": false, "options": []},
+          {"key": "default_channel", "field_type": "channel_select", "required": true, "secret": false, "options": []}
+        ],
+        "preview": {"title": "Preview", "body": "Example card"},
+        "confirm_required": true
+      }
+    ]
+  }
 }

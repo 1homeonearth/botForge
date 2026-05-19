@@ -8,3 +8,6 @@
 - Added platform module contract trait and registry activation flow with secret validation.
 - Added runtime tests for unknown capability deny, scope mismatch deny, valid route + audit, raw event sanitization, and registry activation/missing secret denial.
 - Added `docs/platform_modules.md` plus skeleton platform module docs and setup schema placeholders under `platforms/`.
+
+## 2026-05-19
+- Added setup schema pages/field controls and runtime setup staging/promotion/rollback scaffolding with audit logging and tests.

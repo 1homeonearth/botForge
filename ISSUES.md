@@ -112,3 +112,14 @@
 - **Commands run:**
   - `cargo test`
 - **Result:** Core skeleton landed and tests pass, but full Wasmtime integration and complete platform module crates/tests remain pending in `LEFTOVERS.md`.
+
+## 2026-05-19 08:57 UTC — Capability routing + platform contract skeleton (Incomplete)
+- **Status:** Incomplete
+- **Context:** Continued from existing incomplete chain; implemented initial setup/config staging engine scaffolding to unblock BotForge-rendered setup migration path.
+- **Attempt log:**
+  - 2026-05-19 08:57 UTC: Added setup schema pages and supported interactive field types in `botforge-spec`.
+  - 2026-05-19 08:57 UTC: Added runtime `SetupEngine` for staged config, diff preview, promotion, rollback, and secret masking.
+  - 2026-05-19 08:57 UTC: Added runtime tests for setup staging lifecycle and audit records.
+- **Commands run:**
+  - `cargo test`
+- **Result:** Partial progress only; major requested tasks remain and are tracked in `LEFTOVERS.md`.

@@ -14,3 +14,5 @@ BotForge is a Rust-first runtime ecosystem for policy-contained WASM bots and Ru
 - Inter-bot mediation pattern: Court converts approved intents into sanitized events.
 - Platform module Rust contract + registry activation flow with required-secret checks.
 - Skeleton platform-module documentation and setup placeholders for discord/reddit/spotify/youtube/rss/webhook.
+
+- Setup engine now supports staged config diff preview, promotion, rollback, and secret-masked value presentation in runtime scaffolding.

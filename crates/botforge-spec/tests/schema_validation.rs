@@ -63,10 +63,10 @@ fn rejects_unsupported_build_target() {
 #[test]
 fn rejects_invalid_setup() {
     let mut parsed: BotManifest = serde_json::from_str(include_str!("../examples/bot-manifest.json")).unwrap();
-    parsed.setup.fields[0].key = "".into();
+    parsed.setup.pages[0].fields[0].field_type = "unknown".into();
     assert_eq!(
         validate_bot_manifest(&parsed, &["discord", "reddit"]),
-        Err(ValidationError::InvalidSetup("empty setup field".into()))
+        Err(ValidationError::InvalidSetup("invalid field setup_command".into()))
     );
 }
 

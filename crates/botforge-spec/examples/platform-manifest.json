@@ -1,1 +1,10 @@
-{"platform":{"name":"discord","version":"1.0.0"},"build":{"target":"x86_64-unknown-linux-gnu","crate_path":"crates/botforge-platform-discord"},"security":{"signatures_required":true,"hash_required":true},"allowed_secrets":["discord.bot_token"],"provided_capabilities":["discord.message.send"],"emitted_events":["discord.message.created"],"executed_intents":["discord.message.send"],"setup":{"fields":[{"key":"token_ref","type":"secret_ref"}]}}
+{
+  "platform": {"name": "discord", "version": "1.0.0"},
+  "build": {"language": "rust", "target": "wasm32-wasi", "crate_path": "crates/platform-discord"},
+  "security": {"signatures_required": true, "hash_required": true, "forbidden_permissions": []},
+  "allowed_secrets": ["bot_token"],
+  "provided_capabilities": ["discord.message.send"],
+  "emitted_events": ["discord.message.created"],
+  "executed_intents": ["discord.message.send"],
+  "setup": {"fields": [{"key": "application_id", "field_type": "string", "required": true}]}
+}

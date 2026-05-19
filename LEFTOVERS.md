@@ -1,16 +1,26 @@
 ## Remaining work (2026-05-19)
-- Complete full setup UI/config engine implementation across all requested scopes/profiles, including pagination navigation state, confirm/cancel interaction flow wiring, staging validation/test execution hooks, and profile propagation semantics in storage/runtime.
-- Implement and test botforge-python-wasm-sdk plus bot template repositories (`botforge-python-wasm-sdk`, `botforge-bot-template`) with host wrappers, formatting utilities, harness, manifests, and full docs.
-- Implement Squire core modules/features and civic suite migration to SQLite-backed BotForge intents/events.
-- Implement Sentry moderation/verification/evidence vault/security scaffolding and required schemas/tables.
-- Continue unresolved platform-module/Wasmtime leftovers from prior sessions.
+- Implement Cryer Python/WASM bot module runtime handlers:
+  - `cryer.server.register_from_squire`
+  - `cryer.campaign.schedule`
+  - `cryer.campaign.preview`
+  - `cryer.campaign.run`
+  - `cryer.post.monitor`
+  - `cryer.campaign.report`
+- Wire intents/events for Reddit post submit/status/flair, BotForge jobs, Discord embeds, and audit writes.
+- Add setup UI schema pages + authorization checks and staged confirmation flows in runtime.
+- Implement campaign runner logic (dry-run/live-run, throttle auto-scheduling, all-server mode, idempotency, removal monitoring, analytics aggregation).
+- Add Rust runtime/service APIs that operate on `0003_cryer_campaigns.sql` tables.
+- Add targeted tests for scheduling, cooldown enforcement, profile copy/promotion, monitor classification, and run reports.
 
 ## Completed this session
-- Added setup schema model support in `crates/botforge-spec` for page-based setup flows and interactive field types.
-- Added runtime `SetupEngine` scaffolding for stage/diff/promote/rollback and secret masking.
-- Added runtime tests for staged diff/promotion/rollback, secret masking, and audit entries.
+- Added Cryer SQLite migration `crates/botforge-runtime/migrations/0003_cryer_campaigns.sql`.
+- Added Cryer contract constants in `crates/botforge-spec/src/lib.rs`.
+- Added Cryer constants tests in `crates/botforge-spec/tests/schema_validation.rs`.
+- Added design doc `docs/design/cryer-campaign-storage-and-setup.md`.
+- Updated `README.md` and `CHANGELOG.md`.
 
 ## Continuation commands
+- `sqlite3 :memory: ".read crates/botforge-runtime/migrations/0003_cryer_campaigns.sql"`
 - `cargo test`
-- `sed -n '1,260p' crates/botforge-spec/src/lib.rs`
-- `sed -n '1,320p' crates/botforge-runtime/src/lib.rs`
+- `sed -n '1,260p' crates/botforge-runtime/migrations/0003_cryer_campaigns.sql`
+- `sed -n '1,260p' docs/design/cryer-campaign-storage-and-setup.md`

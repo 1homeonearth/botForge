@@ -1,5 +1,6 @@
 use botforge_spec::{
-    validate_bot_manifest, validate_platform_name, BotManifest, ValidationError,
+    validate_bot_manifest, validate_platform_name, BotManifest, ValidationError, CRYER_EVENT_HANDLERS,
+    CRYER_REQUIRED_INTENTS, CRYER_SETUP_PANELS,
 };
 
 #[test]
@@ -76,4 +77,11 @@ fn placeholder_hash_and_signature_errors_constructible() {
     let sig = ValidationError::InvalidSignaturePlaceholder;
     assert!(matches!(hash, ValidationError::HashMismatchPlaceholder));
     assert!(matches!(sig, ValidationError::InvalidSignaturePlaceholder));
+}
+
+#[test]
+fn cryer_contract_constants_are_published() {
+    assert!(CRYER_EVENT_HANDLERS.contains(&"cryer.campaign.run"));
+    assert!(CRYER_REQUIRED_INTENTS.contains(&"reddit.post.submit.request"));
+    assert!(CRYER_SETUP_PANELS.contains(&"campaign_history"));
 }

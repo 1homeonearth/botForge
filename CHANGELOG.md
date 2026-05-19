@@ -11,3 +11,8 @@
 
 ## 2026-05-19
 - Added setup schema pages/field controls and runtime setup staging/promotion/rollback scaffolding with audit logging and tests.
+
+## 2026-05-19
+- Added Cryer migration design doc for event/intents boundary, setup-panel replacement for CLI, and security implications.
+- Added runtime SQLite migration `0003_cryer_campaigns.sql` with campaign storage, templates/queue, cooldowns, schedules, removal checks, and run/results analytics tables.
+- Added `botforge-spec` exported Cryer handler/intent/setup constants and tests asserting canonical contract names.

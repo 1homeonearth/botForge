@@ -123,3 +123,17 @@
 - **Commands run:**
   - `cargo test`
 - **Result:** Partial progress only; major requested tasks remain and are tracked in `LEFTOVERS.md`.
+
+## 2026-05-19 12:10 UTC — Cryer campaign storage/setup migration scaffold (Incomplete)
+- **Status:** Incomplete
+- **Context:** Requested large Cryer migration from Node/Express/CLI/JSON into BotForge Python/WASM + Rust platform module boundaries. Session implemented storage/setup contract scaffolding only.
+- **Attempt log:**
+  - 2026-05-19 12:00 UTC: Reviewed AGENTS/ISSUES/LEFTOVERS and canonical design docs before edits.
+  - 2026-05-19 12:03 UTC: Added SQLite migration `0003_cryer_campaigns.sql` with requested Cryer campaign/state tables.
+  - 2026-05-19 12:06 UTC: Added Cryer canonical handler/intent/setup constants in `botforge-spec` and coverage tests.
+  - 2026-05-19 12:08 UTC: Added design doc `docs/design/cryer-campaign-storage-and-setup.md` and updated README/CHANGELOG.
+  - 2026-05-19 12:09 UTC: Verified with `cargo test` and SQLite migration parse checks.
+- **Commands run:**
+  - `sqlite3 :memory: ".read crates/botforge-runtime/migrations/0003_cryer_campaigns.sql"`
+  - `cargo test`
+- **Result:** Storage/setup foundation added; full Cryer runtime handlers, Python/WASM implementation, scheduler/runner/removal monitor/report flows remain pending.

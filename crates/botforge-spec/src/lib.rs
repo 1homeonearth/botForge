@@ -3,6 +3,33 @@ use std::collections::BTreeSet;
 
 pub const SPEC_VERSION: &str = "botforge.spec.v1";
 pub const SUPPORTED_WASM_TARGETS: &[&str] = &["wasm32-wasi", "wasm32-unknown-unknown"];
+pub const CRYER_EVENT_HANDLERS: &[&str] = &[
+    "cryer.server.register_from_squire",
+    "cryer.campaign.schedule",
+    "cryer.campaign.preview",
+    "cryer.campaign.run",
+    "cryer.post.monitor",
+    "cryer.campaign.report",
+];
+pub const CRYER_REQUIRED_INTENTS: &[&str] = &[
+    "reddit.post.submit.request",
+    "reddit.post.status.read.request",
+    "reddit.subreddit.flair.read.request",
+    "botforge.job.schedule.request",
+    "discord.embed.send.request",
+    "botforge.audit.write",
+];
+pub const CRYER_SETUP_PANELS: &[&str] = &[
+    "campaign_home",
+    "server_campaign_profile",
+    "subreddit_profiles",
+    "template_queue",
+    "dry_run_preview",
+    "schedule_campaign",
+    "campaign_history",
+    "removal_monitor",
+    "analytics",
+];
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub struct EventEnvelope { pub spec:String,pub event_id:String,pub r#type:String,pub timestamp:String,pub source:EventSource,pub target:EventTarget,pub actor:Actor,pub payload:serde_json::Value,pub context:serde_json::Value,pub correlation_id:Option<String> }

@@ -1,3 +1,5 @@
+Review the two githubs at 1homeonearth/Squire and 1homeonearth/Cryer. Familiarize yourself with each.
+
 BotForge Ultimate Implementation Tutorial
 A practical, Codex-ready guide for building BotForge Runtime, platform modules, first-party bots, Sentry Omega, and Rampart.
 Source manual SHA-256: d2e9442a5f5e9d4a27897c05…

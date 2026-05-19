@@ -1,0 +1,6 @@
+[workspace]
+members = [
+  "crates/botforge-spec",
+  "crates/botforge-runtime",
+]
+resolver = "2"

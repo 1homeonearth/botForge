@@ -8,14 +8,9 @@ BotForge is a Rust-first runtime ecosystem for policy-contained WASM bots and Ru
 - WASM bot/features with typed events/intents.
 - SQLite-backed configuration, state, audit, evidence metadata, analytics.
 
-## Rules snapshot
-- No JavaScript/Node/discord.js/Node-based Cryer.
-- No direct bot network/secrets/env/fs/shell/platform SDK access.
-- Setup is BotForge-rendered, not ad-hoc transport scripts.
-
-## Schema + runtime coverage in this repo
-- `crates/botforge-spec` is the stable schema crate for bot/feature/platform/policy manifests, capability taxonomy, and event/intent envelopes.
-- `crates/botforge-runtime` is the Gate/Court/Chamber skeleton with explicit lifecycle state transitions and boundary tests.
-- SQLite scaffolding and migrations live under `crates/botforge-runtime/migrations` and represent BotForge-owned state paths.
-
-See `AGENTS.md` and canonical docs under `docs/design/` before coding.
+## Implemented in this scaffold
+- Typed `EventEnvelope` and `IntentEnvelope` schemas with source/target/actor/correlation fields.
+- Court capability checks across capability + scope (platform/guild/channel) with audit records for route/deny.
+- Inter-bot mediation pattern: Court converts approved intents into sanitized events.
+- Platform module Rust contract + registry activation flow with required-secret checks.
+- Skeleton platform-module documentation and setup placeholders for discord/reddit/spotify/youtube/rss/webhook.

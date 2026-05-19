@@ -1,11 +1,10 @@
 # CHANGELOG
 
 ## 2026-05-19
-- Rebuilt root `AGENTS.md` to codify BotForge architecture law, migration law, and ISSUES/LEFTOVERS continuity workflow.
-- Added canonical design docs under `docs/design/` for runtime/platform/Rampart model and migration law.
-- Expanded `crates/botforge-spec` into schema crate with manifests/envelopes/capability structures and manifest examples.
-- Added schema validation fixtures for missing fields, invalid versions, missing platform, unknown capability, forbidden permissions, unsupported build target, invalid setup, and placeholder hash/signature failures.
-- Replaced runtime library with Gate/Court/Chamber skeleton and typed intent/event flow boundaries.
-- Added runtime architecture tests proving raw platform events are rejected by Chamber, intents require Court validation before Gate execution, and impossible lifecycle activation jumps are blocked.
-- Added storage scaffold migration `0002_core_storage.sql` with required logical tables for config/state/audit/evidence/verification/moderation/analytics domains.
-- Security/migration note: legacy Squire/Bard/Cryer/Sentry transport assumptions remain behavior-only; runtime trust requires manifest+policy validation and Court-mediated execution.
+- Implemented typed event/intent envelopes in `botforge-spec` including event_id/intent_id, source/target/actor, requested_by_event, and capabilities_used.
+- Added capability taxonomy coverage and expanded `CapabilityGrant` scopes for bot/feature/guild/channel/role/user/platform/environment/time/rate/setup profile.
+- Implemented Court intent validation, scope-based authorization, route/deny auditing, and inter-bot mediation into sanitized Court events.
+- Added Gate sanitization helper for normalized platform events and Chamber forbidden-import guard for raw WASI surfaces.
+- Added platform module contract trait and registry activation flow with secret validation.
+- Added runtime tests for unknown capability deny, scope mismatch deny, valid route + audit, raw event sanitization, and registry activation/missing secret denial.
+- Added `docs/platform_modules.md` plus skeleton platform module docs and setup schema placeholders under `platforms/`.

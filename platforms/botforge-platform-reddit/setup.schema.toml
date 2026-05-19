@@ -1,0 +1,2 @@
+[secrets]
+required = ["secret.reddit.client_id", "secret.reddit.client_secret", "secret.reddit.refresh_token"]

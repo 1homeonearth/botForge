@@ -1,0 +1,6 @@
+[secrets]
+required = ["secret.discord.token"]
+
+[guild]
+required = true
+field = "guild_id"

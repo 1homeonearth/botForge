@@ -30,3 +30,18 @@
   - `find . -maxdepth 4 -type f`
   - `cargo test`
 - **Result:** All requested policy semantics were documented and implemented with deterministic tests and passing verification.
+
+## 2026-05-19 07:52 UTC — Chamber host function security spec and runtime guardrails (Complete)
+- **Status:** Complete
+- **Context:** Added a Chamber host-function security spec and implementation checklist; implemented host-call authorization, capability binding, budget/backpressure enforcement, timeout/cancellation semantics, and abuse-case tests in `crates/botforge-runtime`.
+- **Attempt log:**
+  - 2026-05-19 07:48 UTC: Reviewed runtime crate and existing tests to determine insertion points for Chamber guardrails.
+  - 2026-05-19 07:50 UTC: Added host call model, capability bindings, shared guard function, budget accounting, and denial abuse tracking to `crates/botforge-runtime/src/lib.rs`.
+  - 2026-05-19 07:51 UTC: Added abuse-case test suite for spam intents, oversized payloads, repeated denied calls, timeout, and cancellation.
+  - 2026-05-19 07:52 UTC: Ran full `cargo test` and verified all tests pass.
+- **Commands run:**
+  - `rg --files`
+  - `sed -n '1,260p' crates/botforge-runtime/src/lib.rs`
+  - `sed -n '1,260p' crates/botforge-runtime/tests/policy_engine.rs`
+  - `cargo test`
+- **Result:** Runtime now has deterministic Chamber host-call guardrails and coverage for core abuse cases; spec/checklist published under `docs/design`.

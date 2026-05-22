@@ -9,6 +9,7 @@ BotForge is a Rust-first runtime ecosystem for policy-contained WASM bots and Ru
 - SQLite-backed configuration, state, audit, evidence metadata, analytics.
 
 ## Implemented in this scaffold
+- Runtime feature modules are isolated in per-feature folders (`features/squire/`, `features/bard/`) so feature bundles are easy to pull in, remove, or swap across bots; they implement deterministic migration behaviors (autoban, embed builder, XP/levels, moderation action records, rainbow bridge relay ledger, setup summary helpers, and Bard logging/moderation/starboard/welcome queue shaping with local file-backed logs).
 - Typed `EventEnvelope` and `IntentEnvelope` schemas with source/target/actor/correlation fields.
 - Court capability checks across capability + scope (platform/guild/channel) with audit records for route/deny.
 - Inter-bot mediation pattern: Court converts approved intents into sanitized events.

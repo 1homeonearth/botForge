@@ -1,3 +1,4 @@
+pub mod features;
 use std::collections::{BTreeMap, BTreeSet};
 use botforge_spec::{CapabilityGrant, EventEnvelope, EventSource, EventTarget, IntentEnvelope, SPEC_VERSION};
 

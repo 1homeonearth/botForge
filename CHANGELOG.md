@@ -16,3 +16,14 @@
 - Added Cryer migration design doc for event/intents boundary, setup-panel replacement for CLI, and security implications.
 - Added runtime SQLite migration `0003_cryer_campaigns.sql` with campaign storage, templates/queue, cooldowns, schedules, removal checks, and run/results analytics tables.
 - Added `botforge-spec` exported Cryer handler/intent/setup constants and tests asserting canonical contract names.
+
+## 2026-05-22
+- Added `botforge-runtime::features` scaffold modules for Squire/Bard migration behavior shaping (autoban, moderation actions, and deterministic queue payload constructors) without direct network calls.
+- Added runtime tests in `crates/botforge-runtime/tests/feature_modules.rs` covering threshold recommendations, moderation summaries, and Bard payload shaping.
+
+## 2026-05-22
+- Expanded `botforge-runtime::features` with full Squire and Bard module behavior parity from migration specs, including embed builder, experience tracker, rainbow bridge ledger, setup summary utilities, and file-backed Bard module queue/log flows.
+- Added focused tests for embed persistence, XP progression/persistence, setup helpers, rainbow relay ledgers, and Bard queue/log file outputs.
+
+## 2026-05-22
+- Folderized runtime feature modules into per-feature directories (`features/squire/`, `features/bard/`) to make drop-in/drop-out adoption explicit and low-friction for ecosystem portability.

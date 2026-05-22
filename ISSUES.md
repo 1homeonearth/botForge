@@ -137,3 +137,14 @@
   - `sqlite3 :memory: ".read crates/botforge-runtime/migrations/0003_cryer_campaigns.sql"`
   - `cargo test`
 - **Result:** Storage/setup foundation added; full Cryer runtime handlers, Python/WASM implementation, scheduler/runner/removal monitor/report flows remain pending.
+
+## 2026-05-22 00:40 UTC — Squire/Bard feature modules lacked full behavior parity (Complete)
+- **Status:** Complete
+- **Context:** Prior commit only added minimal scaffolding; requested implementation needed full module functionality for individual migration behavior coverage.
+- **Attempt log:**
+  - 2026-05-22 00:32 UTC: Reviewed existing feature scaffolds and identified missing embed/experience/rainbow/setup helpers and Bard file-backed flows.
+  - 2026-05-22 00:37 UTC: Implemented complete Squire feature set and Bard module structs with deterministic queue/log behavior and optional template support.
+  - 2026-05-22 00:39 UTC: Added expanded tests for persistence, threshold logic, summaries, relay ledgers, and queue file outputs; ran `cargo test -p botforge-runtime`.
+- **Commands run:**
+  - `cargo test -p botforge-runtime`
+- **Result:** Feature modules now provide concrete behavior implementations aligned with migration specification and pass runtime tests.

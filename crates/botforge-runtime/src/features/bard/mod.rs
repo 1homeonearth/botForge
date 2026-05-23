@@ -30,13 +30,12 @@ pub struct QueuePayload {
 
 pub struct LoggingForwarder {
     pub event_log: PathBuf,
-    pub dispatch_path: PathBuf,
 }
 
 impl Default for LoggingForwarder {
     fn default() -> Self {
         let root = bot_root();
-        Self { event_log: root.join("logs/logging_forwarder.log"), dispatch_path: root.join("Discovery/gateway_queue.log") }
+        Self { event_log: root.join("logs/logging_forwarder.log") }
     }
 }
 
@@ -44,29 +43,22 @@ impl LoggingForwarder {
     pub fn record_server_event(&self, server_id: &str, channel_id: &str, message: &str) -> std::io::Result<QueuePayload> {
         let line = format!("server={server_id} channel={channel_id} message={message}");
         append_line(&self.event_log, &line)?;
-        let payload = QueuePayload { kind: "log".into(), route_server_id: server_id.into(), route_channel_id: channel_id.into(), body: message.into() };
-        append_line(&self.dispatch_path, &serde_json::to_string(&payload).expect("payload serialize"))?;
-        Ok(payload)
+        Ok(QueuePayload { kind: "log".into(), route_server_id: server_id.into(), route_channel_id: channel_id.into(), body: message.into() })
     }
 
     pub fn summarize_queue(&self) -> String {
-        if self.dispatch_path.exists() {
-            format!("queue ready at {}", self.dispatch_path.display())
-        } else {
-            format!("queue missing at {}", self.dispatch_path.display())
-        }
+        "dispatch through runtime intents".to_string()
     }
 }
 
 pub struct ModerationLogging {
     pub mod_log: PathBuf,
-    pub dispatch_path: PathBuf,
 }
 
 impl Default for ModerationLogging {
     fn default() -> Self {
         let root = bot_root();
-        Self { mod_log: root.join("logs/moderation.log"), dispatch_path: root.join("Discovery/gateway_queue.log") }
+        Self { mod_log: root.join("logs/moderation.log") }
     }
 }
 
@@ -79,22 +71,19 @@ impl ModerationLogging {
             "subject": subject,
             "reason": reason,
         });
-        let line = payload.to_string();
-        append_line(&self.mod_log, &line)?;
-        append_line(&self.dispatch_path, &line)?;
+        append_line(&self.mod_log, &payload.to_string())?;
         Ok(payload)
     }
 }
 
 pub struct Starboard {
     pub starboard_log: PathBuf,
-    pub dispatch_path: PathBuf,
 }
 
 impl Default for Starboard {
     fn default() -> Self {
         let root = bot_root();
-        Self { starboard_log: root.join("logs/starboard.log"), dispatch_path: root.join("Discovery/gateway_queue.log") }
+        Self { starboard_log: root.join("logs/starboard.log") }
     }
 }
 
@@ -117,22 +106,19 @@ impl Starboard {
             "reactors": reactors.iter().map(|r| r.to_string()).collect::<Vec<_>>(),
             "reaction_count": reaction_count.to_string(),
         });
-        let line = payload.to_string();
         append_line(&self.starboard_log, "threshold reached")?;
-        append_line(&self.dispatch_path, &line)?;
         Ok(Some(payload))
     }
 }
 
 pub struct WelcomeCard {
     pub template_path: PathBuf,
-    pub dispatch_path: PathBuf,
 }
 
 impl Default for WelcomeCard {
     fn default() -> Self {
         let root = bot_root();
-        Self { template_path: root.join("data/welcome_template.txt"), dispatch_path: root.join("Discovery/gateway_queue.log") }
+        Self { template_path: root.join("data/welcome_template.txt") }
     }
 }
 
@@ -151,9 +137,5 @@ impl WelcomeCard {
         }
 
         json!({"kind":"welcome_card","title":format!("Welcome {member_name}"),"body":body,"member_name":member_name,"server_name":server_name})
-    }
-
-    pub fn queue_welcome_for_rust(&self, payload: &Value) -> std::io::Result<()> {
-        append_line(&self.dispatch_path, &payload.to_string())
     }
 }

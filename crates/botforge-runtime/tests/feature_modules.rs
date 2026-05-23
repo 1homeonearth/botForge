@@ -77,33 +77,36 @@ fn rainbow_bridge_tracks_relays() {
 fn bard_modules_log_and_queue_payloads() {
     let root = std::env::temp_dir().join("botforge_bard_test");
     std::fs::create_dir_all(root.join("logs")).expect("logs dir");
-    std::fs::create_dir_all(root.join("Discovery")).expect("queue dir");
 
     let lf = LoggingForwarder {
         event_log: root.join("logs/logging_forwarder.log"),
-        dispatch_path: root.join("Discovery/gateway_queue.log"),
     };
     let p = lf.record_server_event("s1", "c1", "hello").expect("log event");
     assert_eq!(p.kind, "log");
 
     let ml = ModerationLogging {
         mod_log: root.join("logs/moderation.log"),
-        dispatch_path: root.join("Discovery/gateway_queue.log"),
     };
     let mp = ml.log_action("ban", "mod", "u1", "raid").expect("mod log");
     assert_eq!(mp["kind"], "moderation_log");
 
     let sb = Starboard {
         starboard_log: root.join("logs/starboard.log"),
-        dispatch_path: root.join("Discovery/gateway_queue.log"),
     };
     assert!(sb
         .record_reaction("m1", "a", "c", &["x".to_string(), "y".to_string(), "z".to_string()], 3)
         .expect("starboard")
         .is_some());
 
-    let wc = WelcomeCard { template_path: PathBuf::from("/no/such/template"), dispatch_path: root.join("Discovery/gateway_queue.log") };
+    let wc = WelcomeCard { template_path: PathBuf::from("/no/such/template") };
     let payload = wc.build_welcome_card("alice", "guild", Some("be nice"));
-    wc.queue_welcome_for_rust(&payload).expect("queue welcome");
     assert_eq!(payload["kind"], "welcome_card");
+}
+
+#[test]
+fn experience_tracker_guards_zero_level_scale() {
+    let mut tracker = ExperienceTracker::new(0, None);
+    let progress = tracker.award_xp("u1", 10);
+    assert_eq!(progress.level, 11);
+    assert_eq!(tracker.summary("u1").level, 11);
 }

@@ -27,3 +27,8 @@
 
 ## 2026-05-22
 - Folderized runtime feature modules into per-feature directories (`features/squire/`, `features/bard/`) to make drop-in/drop-out adoption explicit and low-friction for ecosystem portability.
+
+## 2026-05-23
+- Fixed Bard feature module dispatch to stop writing queue files (`Discovery/gateway_queue.log`) and keep outputs as runtime-intent-ready payloads, preventing filesystem-coupled transport regressions.
+- Hardened `ExperienceTracker::new` to clamp `level_scale` to at least `1`, preventing divide-by-zero panics when callers pass `0`.
+- Updated runtime feature tests to cover zero-scale XP initialization and intent-style Bard payload behavior without queue file writes.

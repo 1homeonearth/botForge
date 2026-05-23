@@ -111,7 +111,7 @@ pub struct ExperienceTracker {
 
 impl ExperienceTracker {
     pub fn new(level_scale: u64, persistence_path: Option<PathBuf>) -> Self {
-        Self { xp: HashMap::new(), level_scale, persistence_path }
+        Self { xp: HashMap::new(), level_scale: level_scale.max(1), persistence_path }
     }
     pub fn award_xp(&mut self, user_id: &str, amount: i64) -> UserProgress {
         let amount = amount.max(0) as u64;

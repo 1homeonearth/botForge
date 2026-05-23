@@ -19,3 +19,7 @@ BotForge is a Rust-first runtime ecosystem for policy-contained WASM bots and Ru
 - Setup engine now supports staged config diff preview, promotion, rollback, and secret-masked value presentation in runtime scaffolding.
 
 - Cryer campaign migration scaffolding now defines canonical handlers/intents/setup panels and SQLite campaign storage tables for BotForge-native scheduling/reporting.
+
+## Merge protection policy
+- GitHub Actions workflow `.github/workflows/compile.yml` runs `cargo check --workspace --all-targets` for pull requests and pushes to `main`.
+- Configure branch protection on `main` to require the `Rust compile gate` status check before merge so uncompiled changes cannot be merged.

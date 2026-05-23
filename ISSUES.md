@@ -148,3 +148,16 @@
 - **Commands run:**
   - `cargo test -p botforge-runtime`
 - **Result:** Feature modules now provide concrete behavior implementations aligned with migration specification and pass runtime tests.
+
+## 2026-05-23 00:00 UTC — Compile CI gate before merge (Complete)
+- **Status:** Complete
+- **Context:** Repository lacked a GitHub Actions compile workflow to support required status checks before merge.
+- **Attempt log:**
+  - 2026-05-23 00:02 UTC: Verified repository had no `.github/workflows` directory.
+  - 2026-05-23 00:05 UTC: Added `.github/workflows/compile.yml` to run workspace compile checks on PRs/pushes to `main`.
+  - 2026-05-23 00:07 UTC: Updated `README.md` merge protection policy and `CHANGELOG.md` with security/merge implications.
+  - 2026-05-23 00:09 UTC: Ran local compile verification with `cargo check --workspace --all-targets`.
+- **Commands run:**
+  - `rg --files .github/workflows`
+  - `cargo check --workspace --all-targets`
+- **Result:** Compile CI gate is now defined and documented for branch protection enforcement.

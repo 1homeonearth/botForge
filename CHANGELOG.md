@@ -27,3 +27,7 @@
 
 ## 2026-05-22
 - Folderized runtime feature modules into per-feature directories (`features/squire/`, `features/bard/`) to make drop-in/drop-out adoption explicit and low-friction for ecosystem portability.
+
+## 2026-05-23
+- Added GitHub Actions compile workflow at `.github/workflows/compile.yml` that runs `cargo check --workspace --all-targets` on pull requests and pushes to `main`.
+- Documented merge protection policy requiring the `Rust compile gate` check before merge to enforce compile validation in CI.

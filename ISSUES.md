@@ -148,3 +148,18 @@
 - **Commands run:**
   - `cargo test -p botforge-runtime`
 - **Result:** Feature modules now provide concrete behavior implementations aligned with migration specification and pass runtime tests.
+
+## 2026-05-23 00:30 UTC — PR #11 follow-up: Bard queue transport regression + Squire XP divide-by-zero (Complete)
+- **Status:** Complete
+- **Context:** Codex review flagged two P1 regressions in feature modules: Bard wrote transport payloads directly to `Discovery/gateway_queue.log`, and Squire `ExperienceTracker::new(0, ...)` allowed divide-by-zero in `award_xp`/`summary`.
+- **Attempt log:**
+  - 2026-05-23 00:24 UTC: Inspected `crates/botforge-runtime/src/features/bard/mod.rs`, `.../squire/mod.rs`, and `tests/feature_modules.rs` to confirm queue-file writes and unchecked `level_scale` constructor input.
+  - 2026-05-23 00:27 UTC: Refactored Bard feature module to remove queue-file transport writes and keep outputs as runtime-intent-ready payload values while retaining deterministic local log traces.
+  - 2026-05-23 00:28 UTC: Hardened `ExperienceTracker::new` to clamp level scale to `>= 1` and added a regression test for zero-scale construction.
+  - 2026-05-23 00:29 UTC: Updated docs/changelog verbiage and executed runtime feature test suite to verify behavior.
+- **Commands run:**
+  - `sed -n '1,220p' crates/botforge-runtime/src/features/bard/mod.rs`
+  - `sed -n '1,260p' crates/botforge-runtime/src/features/squire/mod.rs`
+  - `sed -n '1,260p' crates/botforge-runtime/tests/feature_modules.rs`
+  - `cargo test -p botforge-runtime --test feature_modules`
+- **Result:** Both P1 issues resolved; no queue-file transport dependency remains in Bard feature helpers and zero-scale XP inputs no longer panic.
